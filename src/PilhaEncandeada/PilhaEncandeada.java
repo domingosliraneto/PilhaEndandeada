@@ -37,5 +37,11 @@ public class PilhaEncandeada {
             tamanho++;
         }
     }    
-
+    public void listar(){
+        No percorrer = inicio;
+        while(percorrer.getProximo() != null){
+        System.err.println(percorrer.getNumero());
+        percorrer = percorrer.getProximo();
+        }
+    }
 }

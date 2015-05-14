@@ -10,5 +10,14 @@ package PilhaEncandeada;
  * @author Domingos Neto
  */
 public class testarPilhaEncandeda {
-    
+    public static void main(String[] args) {
+        PilhaEncandeada x = new PilhaEncandeada();
+        x.push(1);
+        x.push(2);
+        x.push(15);
+        x.push(4);
+        x.push(10);
+        x.push(6);
+        x.listar();
+    }
 }
