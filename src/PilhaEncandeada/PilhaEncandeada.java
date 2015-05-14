@@ -19,7 +19,7 @@ public class PilhaEncandeada {
         fim = null;
         tamanho = 0;
     }
-    public void alocar(int numero){
+    public void push(int numero){
         if(fim == null){
             inicio = new No();
             fim = inicio;
