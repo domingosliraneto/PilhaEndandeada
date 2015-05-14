@@ -14,7 +14,6 @@ public class No {
     private No Proximo;
     
     public No (){
-    
     }
 
     public int getNumero() {

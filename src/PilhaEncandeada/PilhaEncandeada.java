@@ -10,15 +10,19 @@ package PilhaEncandeada;
  * @author Domingos Neto
  */
 public class PilhaEncandeada {
-    public No inicio;
-    public No fim;
-    public int tamanho;
+    private No inicio;
+    private No fim;
+    private int tamanho;
     
     public PilhaEncandeada(){
         inicio = null;
         fim = null;
         tamanho = 0;
     }
+    public boolean eVazia(int inicio) {
+        return inicio < 0;
+    }
+    
     public void push(int numero){
         if(fim == null){
             inicio = new No();
@@ -36,7 +40,11 @@ public class PilhaEncandeada {
             inicio = novoNo;
             tamanho++;
         }
-    }    
+    }
+    public void pop (int numero){
+    
+    }
+    
     public void listar(){
         No percorrer = inicio;
         while(percorrer.getProximo() != null){
