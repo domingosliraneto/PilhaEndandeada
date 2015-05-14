@@ -19,9 +19,23 @@ public class PilhaEncandeada {
         fim = null;
         tamanho = 0;
     }
-    public void alocar(int num){
-        inicio = new No();
-        fim = inicio;
-        PilhaEncandeada novaPilhaEncandeada = new PilhaEncandeada();
-    }
+    public void alocar(int numero){
+        if(fim == null){
+            inicio = new No();
+            fim = inicio;
+            No novoNo = new No();
+            novoNo.setNumero(numero);
+            novoNo.setProximo(inicio);
+            inicio = novoNo;
+            tamanho++;
+        }
+        else{
+            No novoNo = new No();
+            novoNo.setNumero(numero);
+            novoNo.setProximo(inicio);
+            inicio = novoNo;
+            tamanho++;
+        }
+    }    
+
 }
