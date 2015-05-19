@@ -55,9 +55,8 @@ public class PilhaEncandeada {
         }
     }
 
-    
     public int pegarTopo() {
-        return topo -1;
+        return topo.getValor();
     }
 
     
