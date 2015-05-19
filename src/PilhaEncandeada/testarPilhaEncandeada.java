@@ -11,9 +11,7 @@ package PilhaEncandeada;
  */
 public class testarPilhaEncandeada {
     public static void main(String[] args) {
-        PilhaEncandeada x = new PilhaEncandeada();
-        x.criarPilha(10);
-        System.out.println(x.tamanho());
+        PilhaEncadeada x = new PilhaEncadeada();
 
     }
     
