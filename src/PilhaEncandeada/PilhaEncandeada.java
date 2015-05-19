@@ -10,46 +10,59 @@ package PilhaEncandeada;
  * @author Domingos Neto
  */
 public class PilhaEncandeada {
-    private No inicio;
-    private No fim;
-    private int tamanho;
-    
-    public PilhaEncandeada(){
-        inicio = null;
-        fim = null;
-        tamanho = 0;
+
+    private int capacidade;
+    private NoE pilha[];
+    private int topo = -1;
+
+   
+    public void criarPilha(int tamanho) {
+        this.pilha = new NoE[tamanho];
+        this.capacidade = tamanho;
     }
-    public boolean eVazia(int inicio) {
-        return inicio < 0;
-    }
+
     
-    public void push(int numero){
-        if(fim == null){
-            inicio = new No();
-            fim = inicio;
-            No novoNo = new No();
-            novoNo.setNumero(numero);
-            novoNo.setProximo(inicio);
-            inicio = novoNo;
-            tamanho++;
+    public boolean eVazia() {
+        return topo > 0;
+    }
+
+    
+    public boolean eCheia() {
+        return (this.topo + 1 == capacidade);
+    }
+
+    
+    public NoE push(int valor) {
+        NoE elemento = new NoE(valor);
+        if (!eCheia()) {
+            this.pilha[++topo] = elemento;
+            System.out.println("Elemento " + valor + " adicionado");
+            return elemento;
         }
-        else{
-            No novoNo = new No();
-            novoNo.setNumero(numero);
-            novoNo.setProximo(inicio);
-            inicio = novoNo;
-            tamanho++;
-        }
-    }
-    public void pop (int numero){
-    
+        return null;
     }
     
-    public void listar(){
-        No percorrer = inicio;
-        while(percorrer.getProximo() != null){
-        System.err.println(percorrer.getNumero());
-        percorrer = percorrer.getProximo();
+    
+    public NoE pop() {
+        if (eVazia()) {
+            System.out.println("Pilha vazia, não posso retirar elemento desejado");
+            return null;
+        } else {
+            NoE elemento = pilha[topo];
+            pilha[topo--] = null;
+            System.out.println("Elemento " + elemento.getValor() + " removido");
+            return elemento;
         }
     }
+
+    
+    public int pegarTopo() {
+        return topo -1;
+    }
+
+    
+    public int tamanho() {
+        return topo + 1;
+    }
+
 }
