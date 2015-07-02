@@ -10,12 +10,10 @@ package PilhaEncandeada;
  * @author Domingos Neto
  */
 public class NoE {
-    int valor;
-    NoE proximo;
+    private int valor;
 
-    public NoE(int valor, NoE proximo) {
+    public NoE(int valor) {
         this.valor = valor;
-        this.proximo = proximo;
     }
 
     public int getValor() {
@@ -25,13 +23,6 @@ public class NoE {
     public void setValor(int valor) {
         this.valor = valor;
     }
-
-    public NoE getProximo() {
-        return proximo;
-    }
-
-    public void setProximo(NoE proximo) {
-        this.proximo = proximo;
-    }
-       
+    
+    //teste
 }

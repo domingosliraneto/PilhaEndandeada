@@ -9,60 +9,74 @@ package PilhaEncandeada;
  *
  * @author Domingos Neto
  */
-public class PilhaEncadeada {
+public class PilhaEncadeada implements interfaceFilaArranjoSimples {
 
-    int tamanho = 0;
-    NoE topo;
+    private NoE fila[];
+    private int capacidade;
+    private int inicio = 0;
+    private int fim = 0;
 
-    public void criarPilha(int tamanho) {
-        topo = new NoE(-1, null);
+    @Override
+    public void criarFila(int tamanho) {
+        fila = new NoE[tamanho];
+        capacidade = tamanho;
     }
 
+    @Override
+    public boolean eCheia() {
+        return fim == capacidade;
+    }
+
+    @Override
     public boolean eVazia() {
-        return tamanho == 0;
+        return fim == inicio;
     }
 
-    public int Tamanho() {
-        return tamanho;
+    @Override
+    public int tamanho() {
+        return fim + 1;
     }
 
-    public void Limpar() {
-        topo.setProximo(null);
+    @Override
+    public NoE enfileirar(int valor) {
+        if (!eCheia()) {
+            NoE elemento = new NoE(valor);
+            fila[fim++] = elemento;
+            return elemento;
+        }
+        System.out.println("Fila cheia");
+        return null;
     }
 
-    public NoE push(int valor) {
-        NoE elemento = new NoE(valor, null);
-        elemento.setProximo(topo.getProximo());
-        topo.setProximo(elemento);
-        tamanho++;
-        return elemento;
-    }
-
-    public NoE pop() {
-        if (eVazia()) {
-            System.out.println("Pilha vazia, não posso retirar elemento desejado");
-            return null;
-        } else {
-            NoE aux = topo.getProximo();
-            topo.setProximo(topo.getProximo().getProximo());
+    @Override
+    public NoE desenfileirar() {
+        if (!eVazia()) {
+            NoE aux = fila[inicio];
+            fila[inicio++] = null;
             return aux;
         }
+        System.out.println("Fila não possui elementos");
+        return null;
     }
 
-    public int pegarTopo() {
-        return topo.getProximo().getValor();
-    }
-
-    public void listar() {
-        if (eVazia()) {
-            System.out.println("Pilha vazia, não posso retirar elemento desejado");
+    @Override
+    public int pegarInicio() {
+        if (inicio != 0 && fim != 0) {
+            return fila[inicio].getValor();
         } else {
-            NoE aux = topo.getProximo();
-            while (aux != null) {
-                System.out.println(aux.getValor());
-                aux = aux.getProximo();
+            return -1;
+        }
 
+    }
+
+    @Override
+    public void listar() {
+        if (!eVazia()) {
+            for (int i = inicio; i < fim; i++) {
+                System.out.println(fila[i].getValor());
             }
+            System.out.println("----------------------------------");
         }
     }
+
 }
